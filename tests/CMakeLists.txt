@@ -30,3 +30,34 @@ target_include_directories(test_common PRIVATE ${CMAKE_SOURCE_DIR}/common)
 # CMake(CTest)にテストを認識させる
 include(GoogleTest)
 gtest_discover_tests(test_common)
+
+# Pythonのインタープリタを検索
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
+
+set(GOLDEN_TEST_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/golden_test.py)
+set(GOLDEN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/golden)
+
+# ゴールデンテストを実行するターゲットのリスト
+# (すべてのフォルダをテストする場合はここに追加します)
+set(GOLDEN_TARGETS 
+    helloworld 
+    helloworld2 
+    lerp 
+    lerptriple 
+    bilerp 
+    posterization 
+    polar 
+    polarrot 
+    hsv2rgb 
+    legacy 
+    binary
+)
+
+foreach(TARGET_NAME IN LISTS GOLDEN_TARGETS)
+    add_test(
+        NAME GoldenTest_${TARGET_NAME}
+        COMMAND Python3::Interpreter ${GOLDEN_TEST_SCRIPT}
+                $<TARGET_FILE:${TARGET_NAME}>
+                ${GOLDEN_DIR}/${TARGET_NAME}.ppm
+    )
+endforeach()
