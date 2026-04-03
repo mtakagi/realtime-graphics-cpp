@@ -40,7 +40,6 @@ public:
     [[nodiscard]]
     constexpr double& operator[](int i) { return e[i]; }
 
-    [[nodiscard]]
     constexpr vec3& operator+=(const vec3& v) noexcept {
         e[0] += v.e[0];
         e[1] += v.e[1];
@@ -49,7 +48,6 @@ public:
         return *this;
     }
 
-    [[nodiscard]]
     constexpr vec3& operator*=(const double t) noexcept {
         e[0] *= t;
         e[1] *= t;
@@ -66,7 +64,6 @@ public:
         return *this;
     }
 
-    [[nodiscard]]
     constexpr vec3& operator/=(const double t) {
         return *this *= 1 / t;
     }

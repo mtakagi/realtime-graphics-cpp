@@ -28,8 +28,8 @@ int main() {
                 0xbu ^ 9u,
                 0xffffffffu,
                 0xffffffffu + static_cast<uint32_t>(time),
-                std::bit_cast<uint32_t>(floor(time)),
-                std::bit_cast<uint32_t>(-floor(time)),
+                std::bit_cast<uint32_t>(static_cast<float>(floor(time))),
+                std::bit_cast<uint32_t>(static_cast<float>(-floor(time))),
                 std::bit_cast<uint32_t>(11.5625f),
             };
             vec3 color;
