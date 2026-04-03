@@ -31,10 +31,10 @@ jobs:
     # カバレッジデータの収集と整形
     - name: Generate Coverage Report
       run: |
-        # データを収集
-        lcov --capture --directory build --output-file coverage.info
-        # 標準ライブラリやテストコード自体をカバレッジ計測から除外する
-        lcov --remove coverage.info '/usr/*' '*/tests/*' '*/_deps/*' --output-file coverage.info
+        # データを収集 (末尾に --ignore-errors mismatch を追加)
+        lcov --capture --directory build --output-file coverage.info --ignore-errors mismatch
+        # 標準ライブラリやテストコード自体をカバレッジ計測から除外する (こちらにも念のため追加)
+        lcov --remove coverage.info '/usr/*' '*/tests/*' '*/_deps/*' --output-file coverage.info --ignore-errors mismatch
 
     # Codecovアクションを使用してアップロード
     - name: Upload coverage reports to Codecov
