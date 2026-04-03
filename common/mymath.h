@@ -6,6 +6,7 @@
 #ifndef POSTERIZATION_MATH_H
 #define POSTERIZATION_MATH_H
 
+#include <algorithm>
 #include <cmath>
 #include "vec2.h"
 #include "vec3.h"
@@ -124,7 +125,7 @@ inline vec3 fmod(const vec3& a, const vec3& b) {
 }
 
 inline vec3 abs(const vec3& a) {
-    return {abs(a.x()), abs(a.y()), abs(a.z()) };
+    return {std::abs(a.x()), std::abs(a.y()), std::abs(a.z()) };
 }
 
 inline vec3 min(const vec3& a, const vec3& b) {
