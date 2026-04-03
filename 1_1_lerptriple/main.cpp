@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "color.h"
 
 double frac(double x) {
