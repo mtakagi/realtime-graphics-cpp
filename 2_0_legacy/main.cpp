@@ -1,7 +1,7 @@
 #include <iostream>
 #include "color.h"
 #include "vec2.h"
-#include "math.h" // NOLINT
+#include "mymath.h" // NOLINT
 
 double fractSin11(double x) {
     return frac(1000.0 * std::sin(x));

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "color.h"
 
 vec3 lerp(const vec3& a, const vec3& b, double t) {

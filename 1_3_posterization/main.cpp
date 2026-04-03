@@ -1,6 +1,7 @@
 #include <iostream>
+#include <vector>
 #include "color.h"
-#include "math.h" // NOLINT
+#include "mymath.h" // NOLINT
 
 int main() {
     const auto aspect_ratio = 16.0 / 9.0;

@@ -2,7 +2,7 @@
 #include <vector>
 #include "color.h"
 #include "vec2.h"
-#include "math.h" // NOLINT
+#include "mymath.h" // NOLINT
 
 vec3 tex(vec2& st) {
     auto time = 0.2 * 0;
