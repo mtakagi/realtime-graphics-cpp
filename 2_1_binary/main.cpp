@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <bit>
+#include <cstdint>
 #include "color.h"
 #include "vec2.h"
 #include "mymath.h" // NOLINT
