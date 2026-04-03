@@ -1,0 +1,25 @@
+name: C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-24.04 # C++23をサポートする最新のコンパイラを利用するため
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Configure CMake
+      # CMake 3.26以上がデフォルトで入っている環境を利用
+      run: cmake -B build -S .
+
+    - name: Build
+      run: cmake --build build --config Release
+
+    - name: Run Tests (将来テストを追加したとき用)
+      working-directory: ${{github.workspace}}/build
+      run: ctest -C Release --output-on-failure
