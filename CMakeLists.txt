@@ -4,6 +4,12 @@ project(RealtimeGraphicsCpp)
 
 set(CMAKE_CXX_STANDARD 23)
 
+option(ENABLE_COVERAGE "Enable coverage reporting" OFF)
+if(ENABLE_COVERAGE)
+    add_compile_options(--coverage -O0 -g)
+    add_link_options(--coverage)
+endif()
+
 add_subdirectory(0_0_hellowrold)
 add_subdirectory(0_1_hellowrold)
 add_subdirectory(1_0_lerp)
