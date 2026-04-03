@@ -7,7 +7,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -80,3 +81,5 @@ CMakeUserPresets.json
 
 **/cmake-build-debug
 **/.idea/
+
+build/
