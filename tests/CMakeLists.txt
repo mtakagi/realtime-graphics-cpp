@@ -25,7 +25,7 @@ target_link_libraries(
 )
 
 # commonフォルダへのインクルードパスを通す
-target_include_directories(test_common PRIVATE ${CMAKE_SOURCE_DIR}/common)
+target_link_libraries(test_common PRIVATE common_headers)
 
 # CMake(CTest)にテストを認識させる
 include(GoogleTest)
