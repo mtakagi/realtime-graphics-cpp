@@ -18,9 +18,9 @@ uint32_t uhash11(uint32_t n) {
 }
 
 float hash11(float p) {
-    auto n = std::bit_cast<uint>(p);
+    auto n = std::bit_cast<uint32_t>(p);
 
-    return static_cast<float>(uhash11(n)) / std::numeric_limits<unsigned int>::max();
+    return static_cast<float>(uhash11(n)) / std::numeric_limits<uint32_t>::max();
 }
 
 int main() {
