@@ -17,21 +17,12 @@ inline double sign(double x) {
     return (x > 0) - (x < 0);
 }
 
-inline double myatan2(double y, double x) {
-    if (x == 0.0) {
-        std::cerr << x << std::endl;
-        return sign(y) * M_PI / 2.0;
-    } else {
-        return atan2(y, x);
-    }
-}
-
 inline vec2 xy2pol(const vec2& xy) {
-    return { myatan2(xy.y(), xy.x()), xy.length() };
+    return { std::atan2(xy.y(), xy.x()), xy.length() };
 }
 
 inline vec2 pol2xy(const vec2& pol) {
-    return pol.y() * vec2(cos(pol.x()), sin(pol.x()));
+    return pol.y() * vec2(std::cos(pol.x()), std::sin(pol.x()));
 }
 
 inline vec2 floor(const vec2& u) {
@@ -121,7 +112,7 @@ inline vec3 lerp(const vec3& a, const vec3& b, double t) {
 }
 
 inline vec3 fmod(const vec3& a, const vec3& b) {
-    return { fmod(a.x(), b.x()), fmod(a.y(), b.y()), fmod(a.z(), b.z()) };
+    return { std::fmod(a.x(), b.x()), std::fmod(a.y(), b.y()), std::fmod(a.z(), b.z()) };
 }
 
 inline vec3 abs(const vec3& a) {
