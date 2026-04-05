@@ -24,6 +24,7 @@ add_subdirectory(1_5_polarrot)
 add_subdirectory(1_6_hsv2rgb)
 add_subdirectory(2_0_legacy)
 add_subdirectory(2_1_binary)
+add_subdirectory(2_2_hash1d)
 
 enable_testing()
 add_subdirectory(tests)
