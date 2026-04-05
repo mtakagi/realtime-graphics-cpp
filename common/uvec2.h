@@ -41,11 +41,6 @@ class uvec2 {
     constexpr void setY(uint32_t y) noexcept { e[1] = y; }
 
     [[nodiscard]]
-    constexpr uvec2 operator-() const noexcept {
-        return {-e[0], -e[1]};
-    }
-
-    [[nodiscard]]
     constexpr uint32_t operator[](int i) const {
         return e[i];
     }
@@ -84,7 +79,7 @@ class uvec2 {
     }
 
     [[nodiscard]]
-    constexpr uint32_t length() const noexcept {
+    constexpr double length() const noexcept {
         return sqrt(length_squared());
     }
 
@@ -174,11 +169,6 @@ inline bool2 operator>=(const uvec2& u, const uvec2& v) noexcept {
 [[nodiscard]]
 inline uint32_t dot(const uvec2& u, const uvec2& v) noexcept {
     return u.x() * v.x() + u.y() * v.y();
-}
-
-[[nodiscard]]
-inline uvec2 unit_vector(uvec2 v) {
-    return v / v.length();
 }
 
 #endif  // COMMON_UVEC2_H
