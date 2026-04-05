@@ -3,7 +3,7 @@
 
 #include "color.h"
 #include "vec2.h"
-#include "mymath.h" // NOLINT
+#include "mymath.h"
 
 vec3 tex(vec2 st) {
     const std::vector<color> col3 = {
