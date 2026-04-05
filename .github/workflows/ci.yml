@@ -17,17 +17,24 @@ jobs:
     if: github.event_name == 'pull_request'
 
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-      # reviewdog を使って clang-format の結果を PR にコメント
-      - name: Run clang-format with reviewdog
-        uses: reviewdog/action-clang-format@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review  # PRの該当行にインラインコメントを残す設定
-          clang_format_version: '16'  # 使用する clang-format のバージョン
-          filter_mode: 'added'        # 変更された行に対してのみコメントする
-          fail_on_error: true         # フォーマット違反があればCIを失敗させる
+    # 1. clang-format をインストール
+    - name: Install clang-format
+      run: sudo apt-get update && sudo apt-get install -y clang-format
+
+    # 2. 実際にファイルを上書きフォーマットする (-i オプション)
+    - name: Run clang-format
+      run: |
+        find . -name "*.cpp" -o -name "*.h" | grep -v "build" | grep -v "_deps" | xargs clang-format -i
+
+    # 3. 変更された差分を reviewdog がキャッチし、PRにサジェストとして書き込む
+    - name: Suggest formatting changes
+      uses: reviewdog/action-suggester@v1
+      with:
+        tool_name: clang-format
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        fail_on_error: true # 差分（フォーマット違反）があった場合はCIを失敗させる
 
   build-and-test:
     runs-on: ubuntu-24.04
