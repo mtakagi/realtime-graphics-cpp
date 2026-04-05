@@ -3,8 +3,8 @@
 //
 // https://github.com/Unity-Technologies/Unity.Mathematics/blob/master/src/Unity.Mathematics/math.cs
 
-#ifndef COMMON_MATH_H
-#define COMMON_MATH_H
+#ifndef COMMON_MYMATH_H
+#define COMMON_MYMATH_H
 
 #include <algorithm>
 #include <cmath>
