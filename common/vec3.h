@@ -2,8 +2,8 @@
 // Created by mtakagi on 2025/01/26.
 //
 
-#ifndef INONEWEEKEND_VEC3_H
-#define INONEWEEKEND_VEC3_H
+#ifndef COMMON_VEC3_H
+#define COMMON_VEC3_H
 
 #include <cmath>
 #include <iostream>
@@ -184,4 +184,4 @@ inline vec3 unit_vector(vec3 v) {
     return v / v.length();
 }
 
-#endif //INONEWEEKEND_VEC3_H
+#endif //COMMON_VEC3_H

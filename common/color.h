@@ -2,8 +2,8 @@
 // Created by mtakagi on 2025/01/27.
 //
 
-#ifndef INONEWEEKEND_COLOR_H
-#define INONEWEEKEND_COLOR_H
+#ifndef COMMON_COLOR_H
+#define COMMON_COLOR_H
 
 #include "vec3.h"
 
@@ -13,4 +13,4 @@ void write_color(std::ostream& out, color pixel_color) {
         << static_cast<int>(255.999 * pixel_color.z()) << '\n';
 }
 
-#endif //INONEWEEKEND_COLOR_H
+#endif //COMMON_COLOR_H
