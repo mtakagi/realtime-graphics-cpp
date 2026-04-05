@@ -1,0 +1,28 @@
+{
+  "name": "C++23 Graphics Dev",
+  "image": "mcr.microsoft.com/devcontainers/cpp:1-ubuntu-24.04",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "installTools": false,
+      "version": "os-provided"
+    }
+  },
+
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y lcov",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cmake-tools",
+        "twxs.cmake",
+        "ms-python.python"
+      ],
+      "settings": {
+        "C_Cpp.default.cppStandard": "c++23"
+      }
+    }
+  }
+}
