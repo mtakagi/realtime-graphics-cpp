@@ -4,6 +4,9 @@ project(RealtimeGraphicsCpp)
 
 set(CMAKE_CXX_STANDARD 23)
 
+add_library(common_headers INTERFACE)
+target_include_directories(common_headers INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/common)
+
 option(ENABLE_COVERAGE "Enable coverage reporting" OFF)
 if(ENABLE_COVERAGE)
     add_compile_options(--coverage -O0 -g)

@@ -4,4 +4,4 @@ project(posterization)
 set(CMAKE_CXX_STANDARD 23)
 
 add_executable(posterization main.cpp)
-target_include_directories(posterization PRIVATE ${CMAKE_SOURCE_DIR}/common)
+target_link_libraries(posterization PRIVATE common_headers)
