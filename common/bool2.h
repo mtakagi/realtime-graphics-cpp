@@ -2,8 +2,8 @@
 // Created by mtakagi on 2025/02/02.
 //
 
-#ifndef POSTERIZATION_BOOL2_H
-#define POSTERIZATION_BOOL2_H
+#ifndef COMMON_BOOL2_H
+#define COMMON_BOOL2_H
 
 class bool2 {
 public:
@@ -27,4 +27,4 @@ private:
     bool e[2];
 };
 
-#endif //POSTERIZATION_BOOL2_H
+#endif //COMMON_BOOL2_H

@@ -3,8 +3,8 @@
 //
 // https://github.com/Unity-Technologies/Unity.Mathematics/blob/master/src/Unity.Mathematics/math.cs
 
-#ifndef POSTERIZATION_MATH_H
-#define POSTERIZATION_MATH_H
+#ifndef COMMON_MYMATH_H
+#define COMMON_MYMATH_H
 
 #include <algorithm>
 #include <cmath>
@@ -131,4 +131,4 @@ inline vec3 clamp(const vec3& valueToClamp, const vec3& lowerBounds, const vec3&
     return max(lowerBounds, min(upperBounds, valueToClamp));
 }
 
-#endif //POSTERIZATION_MATH_H
+#endif //COMMON_MYMATH_H

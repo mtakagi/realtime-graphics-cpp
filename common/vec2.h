@@ -2,8 +2,8 @@
 // Created by mtakagi on 2025/02/02.
 //
 
-#ifndef POSTERIZATION_VEC2_H
-#define POSTERIZATION_VEC2_H
+#ifndef COMMON_VEC2_H
+#define COMMON_VEC2_H
 
 #include <cmath>
 #include <iostream>
@@ -170,4 +170,4 @@ inline vec2 unit_vector(vec2 v) {
     return v / v.length();
 }
 
-#endif //POSTERIZATION_VEC2_H
+#endif //COMMON_VEC2_H
