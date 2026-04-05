@@ -37,7 +37,7 @@ int main() {
             auto u = static_cast<double>(i) / (width - 1);
             auto v = static_cast<double>(j) / (height - 1);
             auto pos = vec2(u, v) + time;
-            auto hash = hash11(pos.x());
+            auto hash = hash11(static_cast<float>(pos.x()));
             auto color = vec3(hash, hash, hash);          
 
             write_color(std::cout, color);
