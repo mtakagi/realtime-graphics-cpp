@@ -34,8 +34,8 @@ int main() {
     for (int j = height - 1; j >= 0; --j) {
         std::cerr << "\rScan lines remaining: " << j << ' ' << std::flush;
         for (int i = 0; i < width; ++i) {
-            auto u = (double)i / (width - 1);
-            auto v = (double)j / (height - 1);
+            auto u = static_cast<double>(i) / (width - 1);
+            auto v = static_cast<double>(j) / (height - 1);
             auto pos = vec2(u, v) + time;
             auto hash = hash11(pos.x());
             auto color = vec3(hash, hash, hash);          
