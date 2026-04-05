@@ -4,7 +4,7 @@
 #include <cstdint>
 #include "color.h"
 #include "vec2.h"
-#include "mymath.h" // NOLINT
+#include "mymath.h"
 
 int main() {
     const auto aspect_ratio = 16.0 / 9.0;

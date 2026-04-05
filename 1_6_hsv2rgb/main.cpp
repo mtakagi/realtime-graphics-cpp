@@ -1,7 +1,7 @@
 #include <iostream>
 #include "color.h"
 #include "vec2.h"
-#include "mymath.h" // NOLINT
+#include "mymath.h"
 
 vec3 hsv2rgb(const vec3& c) {
     auto rgb = clamp(abs(fmod(c.x() * 6.0 + vec3(0.0, 4.0, 2.0), vec3(6.0)) - 3.0) - 1.0, vec3(0.0), vec3(1.0));
