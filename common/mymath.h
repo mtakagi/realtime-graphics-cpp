@@ -131,4 +131,4 @@ inline vec3 clamp(const vec3& valueToClamp, const vec3& lowerBounds, const vec3&
     return max(lowerBounds, min(upperBounds, valueToClamp));
 }
 
-#endif //COMMON_MATH_H
+#endif //COMMON_MYMATH_H
