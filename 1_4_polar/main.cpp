@@ -2,14 +2,14 @@
 #include <vector>
 
 #include "color.h"
-#include "vec2.h"
 #include "mymath.h"
+#include "vec2.h"
 
 vec3 tex(vec2 st) {
     const std::vector<color> col3 = {
-            vec3(0.0, 0.0, 1.0),
-            vec3(1.0, 0.0, 0.0),
-            vec3(1.0, 1.0, 1.0),
+        vec3(0.0, 0.0, 1.0),
+        vec3(1.0, 0.0, 0.0),
+        vec3(1.0, 1.0, 1.0),
     };
     st.setX(st.x() / M_PI + 1.0);
     auto index = static_cast<int>(st.x());

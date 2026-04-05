@@ -6,12 +6,14 @@
 #define COMMON_BOOL3_H
 
 class bool3 {
-public:
+   public:
     [[nodiscard]]
-    constexpr bool3() noexcept : e { false, false, false }  {}
+    constexpr bool3() noexcept
+        : e{false, false, false} {}
 
     [[nodiscard]]
-    constexpr bool3(bool b1, bool b2, bool b3) noexcept : e { b1, b2, b3 } {}
+    constexpr bool3(bool b1, bool b2, bool b3) noexcept
+        : e{b1, b2, b3} {}
 
     [[nodiscard]]
     constexpr bool x() const {
@@ -28,8 +30,8 @@ public:
         return e[2];
     }
 
-private:
+   private:
     bool e[3];
 };
 
-#endif //COMMON_BOOL3_H
+#endif  // COMMON_BOOL3_H

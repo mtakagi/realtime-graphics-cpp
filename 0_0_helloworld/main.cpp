@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "color.h"
 
 int main() {
@@ -17,6 +18,6 @@ int main() {
         }
     }
     std::cerr << "\nDone.\n";
-    
+
     return 0;
 }

@@ -1,16 +1,14 @@
 #include <iostream>
-#include "color.h"
-#include "vec2.h"
-#include "mymath.h"
 
-double fractSin11(double x) {
-    return frac(1000.0 * std::sin(x));
-}
+#include "color.h"
+#include "mymath.h"
+#include "vec2.h"
+
+double fractSin11(double x) { return frac(1000.0 * std::sin(x)); }
 
 double fractSin21(const vec2& xy) {
     return frac(std::sin(dot(xy, vec2(12.9808, 78.233))) * 43758.5443123);
 }
-
 
 int main() {
     const auto aspect_ratio = 16.0 / 9.0;
@@ -29,11 +27,12 @@ int main() {
             if (channel == 0) {
                 write_color(std::cout, fractSin11(pos.x()));
             } else {
-                write_color(std::cout, fractSin21(pos / vec2(width - 1, height - 1)));
+                write_color(std::cout,
+                            fractSin21(pos / vec2(width - 1, height - 1)));
             }
         }
     }
     std::cerr << "\nDone.\n";
-    
+
     return 0;
 }

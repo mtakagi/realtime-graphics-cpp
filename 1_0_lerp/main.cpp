@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "color.h"
 
 vec3 lerp(const vec3& a, const vec3& b, double t) {
@@ -24,6 +25,6 @@ int main() {
         }
     }
     std::cerr << "\nDone.\n";
-    
+
     return 0;
 }

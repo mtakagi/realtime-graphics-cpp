@@ -7,38 +7,54 @@
 
 #include <cmath>
 #include <iostream>
+
 #include "bool3.h"
 
 using std::sqrt;
 
 class vec3 {
-public:
+   public:
     [[nodiscard]]
-    constexpr vec3() : e{ 0, 0, 0 } {}
+    constexpr vec3()
+        : e{0, 0, 0} {}
 
     [[nodiscard]]
-    constexpr vec3(double e0) : e{ e0, e0, e0 } {}
+    constexpr vec3(double e0)
+        : e{e0, e0, e0} {}
 
     [[nodiscard]]
-    constexpr vec3(double e0, double e1, double e2) : e{ e0, e1, e2 } {}
+    constexpr vec3(double e0, double e1, double e2)
+        : e{e0, e1, e2} {}
 
     [[nodiscard]]
-    constexpr double x() const noexcept { return e[0]; }
+    constexpr double x() const noexcept {
+        return e[0];
+    }
 
     [[nodiscard]]
-    constexpr double y() const noexcept { return e[1]; }
+    constexpr double y() const noexcept {
+        return e[1];
+    }
 
     [[nodiscard]]
-    constexpr double z() const noexcept { return e[2]; }
+    constexpr double z() const noexcept {
+        return e[2];
+    }
 
     [[nodiscard]]
-    constexpr vec3 operator-() const noexcept { return {-e[0], -e[1], -e[2]}; }
+    constexpr vec3 operator-() const noexcept {
+        return {-e[0], -e[1], -e[2]};
+    }
 
     [[nodiscard]]
-    constexpr double operator[](int i) const { return e[i]; }
+    constexpr double operator[](int i) const {
+        return e[i];
+    }
 
     [[nodiscard]]
-    constexpr double& operator[](int i) { return e[i]; }
+    constexpr double& operator[](int i) {
+        return e[i];
+    }
 
     constexpr vec3& operator+=(const vec3& v) noexcept {
         e[0] += v.e[0];
@@ -64,9 +80,7 @@ public:
         return *this;
     }
 
-    constexpr vec3& operator/=(const double t) {
-        return *this *= 1 / t;
-    }
+    constexpr vec3& operator/=(const double t) { return *this *= 1 / t; }
 
     [[nodiscard]]
     constexpr double length() const noexcept {
@@ -78,7 +92,7 @@ public:
         return e[0] * e[0] + e[1] * e[1] + e[2] * e[2];
     }
 
-private:
+   private:
     double e[3];
 };
 
@@ -91,43 +105,42 @@ inline std::ostream& operator<<(std::ostream& out, const vec3& v) {
 
 [[nodiscard]]
 inline vec3 operator+(const vec3& u, const vec3& v) noexcept {
-    return { u.x() + v.x(), u.y() + v.y(), u.z() + v.z() };
+    return {u.x() + v.x(), u.y() + v.y(), u.z() + v.z()};
 }
 
 [[nodiscard]]
 inline vec3 operator+(double x, const vec3& v) noexcept {
-    return { x + v.x(), x + v.y(), x + v.z() };
+    return {x + v.x(), x + v.y(), x + v.z()};
 }
 
 [[nodiscard]]
 inline vec3 operator+(const vec3& v, double x) noexcept {
-    return { x + v.x(), x + v.y(), x + v.z() };
+    return {x + v.x(), x + v.y(), x + v.z()};
 }
-
 
 [[nodiscard]]
 inline vec3 operator-(const vec3& u, const vec3& v) noexcept {
-    return { u.x() - v.x(), u.y() - v.y(), u.z() - v.z() };
+    return {u.x() - v.x(), u.y() - v.y(), u.z() - v.z()};
 }
 
 [[nodiscard]]
 inline vec3 operator-(const vec3& v, const double x) noexcept {
-    return { v.x() - x, v.y() - x, v.z() - x };
+    return {v.x() - x, v.y() - x, v.z() - x};
 }
 
 [[nodiscard]]
 inline vec3 operator-(const double x, const vec3& v) noexcept {
-    return { x - v.x(), x - v.y(), x -v.z() };
+    return {x - v.x(), x - v.y(), x - v.z()};
 }
 
 [[nodiscard]]
 inline vec3 operator*(const vec3& u, const vec3& v) noexcept {
-    return { u.x() * v.x(), u.y() * v.y(), u.z() * v.z() };
+    return {u.x() * v.x(), u.y() * v.y(), u.z() * v.z()};
 }
 
 [[nodiscard]]
 inline vec3 operator*(const double t, const vec3& v) noexcept {
-    return { t * v.x(), t * v.y(), t * v.z() };
+    return {t * v.x(), t * v.y(), t * v.z()};
 }
 
 [[nodiscard]]
@@ -142,7 +155,7 @@ inline vec3 operator/(const vec3& v, const double t) noexcept {
 
 [[nodiscard]]
 inline vec3 operator/(const vec3& u, const vec3& v) noexcept {
-    return { u.x() / v.x(), u.y() / v.y(), u.z() / v.z() };
+    return {u.x() / v.x(), u.y() / v.y(), u.z() / v.z()};
 }
 
 [[nodiscard]]
@@ -172,11 +185,8 @@ inline double dot(const vec3& u, const vec3& v) noexcept {
 
 [[nodiscard]]
 inline vec3 cross(const vec3& u, const vec3& v) noexcept {
-    return {
-        u.y() * v.z() - u.z() * v.y(),
-        u.z() * v.x() - u.x() * v.z(),
-        u.x() * v.y() - u.y() * v.x()
-    };
+    return {u.y() * v.z() - u.z() * v.y(), u.z() * v.x() - u.x() * v.z(),
+            u.x() * v.y() - u.y() * v.x()};
 }
 
 [[nodiscard]]
@@ -184,4 +194,4 @@ inline vec3 unit_vector(vec3 v) {
     return v / v.length();
 }
 
-#endif //COMMON_VEC3_H
+#endif  // COMMON_VEC3_H

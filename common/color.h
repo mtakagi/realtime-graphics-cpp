@@ -13,4 +13,4 @@ void write_color(std::ostream& out, color pixel_color) {
         << static_cast<int>(255.999 * pixel_color.z()) << '\n';
 }
 
-#endif //COMMON_COLOR_H
+#endif  // COMMON_COLOR_H

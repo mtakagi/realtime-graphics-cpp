@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "vec2.h"
 
 TEST(Vec2Test, BasicOperations) {

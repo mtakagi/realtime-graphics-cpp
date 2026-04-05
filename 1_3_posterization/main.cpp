@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+
 #include "color.h"
 #include "mymath.h"
 
@@ -8,10 +9,10 @@ int main() {
     const int width = 384;
     const int height = static_cast<int>(width / aspect_ratio);
     const std::vector<color> col4 = {
-            vec3(1.0, 0.0, 0.0),
-            vec3(1.0, 1.0, 0.0),
-            vec3(1.0, 0.0, 1.0),
-            vec3(1.0, 1.0, 1.0),
+        vec3(1.0, 0.0, 0.0),
+        vec3(1.0, 1.0, 0.0),
+        vec3(1.0, 0.0, 1.0),
+        vec3(1.0, 1.0, 1.0),
     };
 
     std::cout << "P3\n" << width << ' ' << height << "\n255\n";
@@ -33,17 +34,20 @@ int main() {
                 pos = floor(pos) + step(vec2(0.5, 0.5), frac(pos));
             } else {
                 auto thr = 0.25 * std::sin(0.5);
-                pos = floor(pos) + smoothstep(vec2(0.25 + thr, 0.25 + thr), vec2(0.75 - thr, 0.75 - thr), frac(pos));
+                pos = floor(pos) + smoothstep(vec2(0.25 + thr, 0.25 + thr),
+                                              vec2(0.75 - thr, 0.75 - thr),
+                                              frac(pos));
             }
 
             pos = pos / n;
 
-            auto pixel_color = lerp(lerp(col4[0], col4[1], pos.x()), lerp(col4[2], col4[3], pos.x()), pos.y());
+            auto pixel_color = lerp(lerp(col4[0], col4[1], pos.x()),
+                                    lerp(col4[2], col4[3], pos.x()), pos.y());
 
             write_color(std::cout, pixel_color);
         }
     }
     std::cerr << "\nDone.\n";
-    
+
     return 0;
 }
