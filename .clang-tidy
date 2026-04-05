@@ -1,0 +1,4 @@
+# 最新のC++の書き方や、可読性、C++ Core Guidelinesのチェックを有効化
+Checks: '-*,modernize-*,readability-*,cppcoreguidelines-*'
+# commonフォルダ配下のヘッダファイルも解析対象にする
+HeaderFilterRegex: 'common/.*'
