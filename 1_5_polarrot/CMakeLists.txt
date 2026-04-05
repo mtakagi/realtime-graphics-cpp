@@ -4,4 +4,4 @@ project(polarrot)
 set(CMAKE_CXX_STANDARD 23)
 
 add_executable(polarrot main.cpp)
-target_include_directories(polarrot PRIVATE ${CMAKE_SOURCE_DIR}/common)
+target_link_libraries(polarrot PRIVATE common_headers)
