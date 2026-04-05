@@ -42,7 +42,7 @@ class uvec3 {
     }
 
     [[nodiscard]]
-    constexpr uint32_t operator-() const noexcept {
+    constexpr uvec3 operator-() const noexcept {
         return {-e[0], -e[1], -e[2]};
     }
 
@@ -64,7 +64,7 @@ class uvec3 {
         return *this;
     }
 
-    constexpr uvec3& operator*=(const double t) noexcept {
+    constexpr uvec3& operator*=(const uint32_t t) noexcept {
         e[0] *= t;
         e[1] *= t;
         e[2] *= t;
@@ -80,7 +80,13 @@ class uvec3 {
         return *this;
     }
 
-    constexpr uvec3& operator/=(const uint32_t t) { return *this *= 1 / t; }
+    constexpr uvec3& operator/=(const uint32_t t) {
+        e[0] /= t;
+        e[1] /= t;
+        e[2] /= t;
+
+        return *this;
+    }
 
     [[nodiscard]]
     constexpr double length() const noexcept {
@@ -147,7 +153,7 @@ inline uvec3 operator*(const uvec3& v, const uint32_t t) noexcept {
 
 [[nodiscard]]
 inline uvec3 operator/(const uvec3& v, const uint32_t t) noexcept {
-    return (1 / t) * v;
+    return {v.x() / t, v.y() / t, v.z() / t};
 }
 
 [[nodiscard]]
@@ -176,14 +182,8 @@ inline bool3 operator>=(const uvec3& u, const uvec3& v) noexcept {
 }
 
 [[nodiscard]]
-inline double dot(const uvec3& u, const uvec3& v) noexcept {
+inline uint32_t dot(const uvec3& u, const uvec3& v) noexcept {
     return u.x() * v.x() + u.y() * v.y() + u.z() * v.z();
-}
-
-[[nodiscard]]
-inline uvec3 cross(const uvec3& u, const uvec3& v) noexcept {
-    return {u.y() * v.z() - u.z() * v.y(), u.z() * v.x() - u.x() * v.z(),
-            u.x() * v.y() - u.y() * v.x()};
 }
 
 [[nodiscard]]
@@ -191,4 +191,4 @@ inline uvec3 unit_vector(uvec3 v) {
     return v / v.length();
 }
 
-#endif //COMMON_UVEC3_H
+#endif  // COMMON_UVEC3_H

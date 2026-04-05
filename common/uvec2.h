@@ -76,7 +76,12 @@ class uvec2 {
         return *this;
     }
 
-    constexpr uvec2& operator/=(const uint32_t t) { return *this *= 1 / t; }
+    constexpr uvec2& operator/=(const uint32_t t) {
+        e[0] /= t;
+        e[1] /= t;
+
+        return *this;
+    }
 
     [[nodiscard]]
     constexpr uint32_t length() const noexcept {
@@ -138,7 +143,7 @@ inline uvec2 operator*(const uvec2& v, const uint32_t t) noexcept {
 
 [[nodiscard]]
 inline uvec2 operator/(const uvec2& v, const uint32_t t) noexcept {
-    return (1 / t) * v;
+    return {v.x() / t, v.y() / t};
 }
 
 [[nodiscard]]
@@ -176,4 +181,4 @@ inline uvec2 unit_vector(uvec2 v) {
     return v / v.length();
 }
 
-#endif //COMMON_UVEC2_H
+#endif  // COMMON_UVEC2_H
