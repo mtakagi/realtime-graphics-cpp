@@ -21,7 +21,7 @@ add_executable(
 # GTestのメイン関数とリンク
 target_link_libraries(
   test_common
-  GTest::gtest_main
+  PRIVATE GTest::gtest_main
 )
 
 # commonフォルダへのインクルードパスを通す
