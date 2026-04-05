@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "vec3.h"
 
 TEST(Vec3Test, DefaultConstructor) {
@@ -18,7 +19,7 @@ TEST(Vec3Test, ValueConstructor) {
 TEST(Vec3Test, ArithmeticOperations) {
     vec3 v1(1.0, 2.0, 3.0);
     vec3 v2(4.0, 5.0, 6.0);
-    
+
     vec3 add = v1 + v2;
     EXPECT_DOUBLE_EQ(add.x(), 5.0);
     EXPECT_DOUBLE_EQ(add.y(), 7.0);
@@ -37,7 +38,7 @@ TEST(Vec3Test, LengthAndDot) {
 
     vec3 v1(1.0, 0.0, 0.0);
     vec3 v2(0.0, 1.0, 0.0);
-    EXPECT_DOUBLE_EQ(dot(v1, v2), 0.0); // 直交
+    EXPECT_DOUBLE_EQ(dot(v1, v2), 0.0);  // 直交
 }
 
 TEST(Vec3Test, CrossProduct) {

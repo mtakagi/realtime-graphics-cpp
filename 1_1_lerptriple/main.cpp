@@ -1,10 +1,9 @@
 #include <iostream>
 #include <vector>
+
 #include "color.h"
 
-double frac(double x) {
-    return x - floor(x);
-}
+double frac(double x) { return x - floor(x); }
 
 vec3 lerp(const vec3& a, const vec3& b, double t) {
     return (1 - t) * a + t * b;
@@ -15,9 +14,9 @@ int main() {
     const int width = 384;
     const int height = static_cast<int>(width / aspect_ratio);
     const std::vector<vec3> col3 = {
-            vec3(1.0, 0, 0),
-            vec3(0, 0, 1.0),
-            vec3(0, 1.0, 0),
+        vec3(1.0, 0, 0),
+        vec3(0, 0, 1.0),
+        vec3(0, 1.0, 0),
     };
 
     std::cout << "P3\n" << width << ' ' << height << "\n255\n";
@@ -33,6 +32,6 @@ int main() {
         }
     }
     std::cerr << "\nDone.\n";
-    
+
     return 0;
 }

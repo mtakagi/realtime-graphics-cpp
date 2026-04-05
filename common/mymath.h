@@ -8,17 +8,16 @@
 
 #include <algorithm>
 #include <cmath>
-#include "vec2.h"
-#include "vec3.h"
+
 #include "bool2.h"
 #include "bool3.h"
+#include "vec2.h"
+#include "vec3.h"
 
-inline double sign(double x) {
-    return (x > 0) - (x < 0);
-}
+inline double sign(double x) { return (x > 0) - (x < 0); }
 
 inline vec2 xy2pol(const vec2& xy) {
-    return { std::atan2(xy.y(), xy.x()), xy.length() };
+    return {std::atan2(xy.y(), xy.x()), xy.length()};
 }
 
 inline vec2 pol2xy(const vec2& pol) {
@@ -26,47 +25,43 @@ inline vec2 pol2xy(const vec2& pol) {
 }
 
 inline vec2 floor(const vec2& u) {
-    return { std::floor(u.x()), std::floor(u.y()) };
+    return {std::floor(u.x()), std::floor(u.y())};
 }
 
 inline vec3 floor(const vec3& u) {
-    return { std::floor(u.x()), std::floor(u.y()), std::floor(u.z()) };
+    return {std::floor(u.x()), std::floor(u.y()), std::floor(u.z())};
 }
 
-inline double frac(double x) {
-    return x - floor(x);
-}
+inline double frac(double x) { return x - floor(x); }
 
-inline vec2 frac(const vec2& u) {
-    return u - floor(u);
-}
+inline vec2 frac(const vec2& u) { return u - floor(u); }
 
-inline vec3 frac(const vec3& u) {
-    return u - floor(u);
-}
+inline vec3 frac(const vec3& u) { return u - floor(u); }
 
 inline double select(double falseValue, double trueValue, bool test) {
     return test ? trueValue : falseValue;
 }
 
 inline vec2 select(const vec2& falseValue, const vec2& trueValue, bool2 test) {
-    return {test.x() ? trueValue.x() : falseValue.x(), test.y() ? trueValue.y() : falseValue.y()};
+    return {test.x() ? trueValue.x() : falseValue.x(),
+            test.y() ? trueValue.y() : falseValue.y()};
 }
 
 inline vec3 select(const vec3& falseValue, const vec3& trueValue, bool3 test) {
-    return {test.x() ? trueValue.x() : falseValue.x(), test.y() ? trueValue.y() : falseValue.y(), test.z() ? trueValue.z() : falseValue.z()};
+    return {test.x() ? trueValue.x() : falseValue.x(),
+            test.y() ? trueValue.y() : falseValue.y(),
+            test.z() ? trueValue.z() : falseValue.z()};
 }
 
-inline double saturate(double x) {
-    return std::clamp(x, 0.0, 1.0);
-}
+inline double saturate(double x) { return std::clamp(x, 0.0, 1.0); }
 
 inline vec2 saturate(const vec2& v) {
-    return { std::clamp(v.x(), 0.0, 1.0), std::clamp(v.y(), 0.0, 1.0 ) };
+    return {std::clamp(v.x(), 0.0, 1.0), std::clamp(v.y(), 0.0, 1.0)};
 }
 
 inline vec3 saturate(const vec3& v) {
-    return { std::clamp(v.x(), 0.0, 1.0), std::clamp(v.y(), 0.0, 1.0 ), std::clamp(v.z(), 0.0, 1.0) };
+    return {std::clamp(v.x(), 0.0, 1.0), std::clamp(v.y(), 0.0, 1.0),
+            std::clamp(v.z(), 0.0, 1.0)};
 }
 
 inline double step(double threshold, double x) {
@@ -74,7 +69,7 @@ inline double step(double threshold, double x) {
 }
 
 inline vec2 step(const vec2& threshold, const vec2& x) {
-    return select(vec2(0,0), vec2(1, 1), x >= threshold);
+    return select(vec2(0, 0), vec2(1, 1), x >= threshold);
 }
 
 inline vec3 step(const vec3& threshold, const vec3& x) {
@@ -112,23 +107,27 @@ inline vec3 lerp(const vec3& a, const vec3& b, double t) {
 }
 
 inline vec3 fmod(const vec3& a, const vec3& b) {
-    return { std::fmod(a.x(), b.x()), std::fmod(a.y(), b.y()), std::fmod(a.z(), b.z()) };
+    return {std::fmod(a.x(), b.x()), std::fmod(a.y(), b.y()),
+            std::fmod(a.z(), b.z())};
 }
 
 inline vec3 abs(const vec3& a) {
-    return {std::abs(a.x()), std::abs(a.y()), std::abs(a.z()) };
+    return {std::abs(a.x()), std::abs(a.y()), std::abs(a.z())};
 }
 
 inline vec3 min(const vec3& a, const vec3& b) {
-    return { std::min(a.x(), b.x()), std::min(a.y(), b.y()), std::min(a.z(), b.z()) };
+    return {std::min(a.x(), b.x()), std::min(a.y(), b.y()),
+            std::min(a.z(), b.z())};
 }
 
 inline vec3 max(const vec3& a, const vec3& b) {
-    return { std::max(a.x(), b.x()), std::max(a.y(), b.y()), std::max(a.z(), b.z()) };
+    return {std::max(a.x(), b.x()), std::max(a.y(), b.y()),
+            std::max(a.z(), b.z())};
 }
 
-inline vec3 clamp(const vec3& valueToClamp, const vec3& lowerBounds, const vec3& upperBounds) {
+inline vec3 clamp(const vec3& valueToClamp, const vec3& lowerBounds,
+                  const vec3& upperBounds) {
     return max(lowerBounds, min(upperBounds, valueToClamp));
 }
 
-#endif //COMMON_MYMATH_H
+#endif  // COMMON_MYMATH_H

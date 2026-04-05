@@ -7,6 +7,20 @@ set(CMAKE_CXX_STANDARD 23)
 add_library(common_headers INTERFACE)
 target_include_directories(common_headers INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/common)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+option(ENABLE_CLANG_TIDY "Enable clang-tidy analysis during build" ON)
+if(ENABLE_CLANG_TIDY)
+    find_program(CLANG_TIDY_EXE NAMES "clang-tidy")
+    if(CLANG_TIDY_EXE)
+        message(STATUS "clang-tidy found: ${CLANG_TIDY_EXE}")
+        # コンパイル時に自動的に clang-tidy を実行する
+        set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
+    else()
+        message(WARNING "clang-tidy not found!")
+    endif()
+endif()
+
 option(ENABLE_COVERAGE "Enable coverage reporting" OFF)
 if(ENABLE_COVERAGE)
     add_compile_options(--coverage -O0 -g)

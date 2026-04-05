@@ -1,7 +1,8 @@
-#include <iostream>
-#include <vector>
 #include <bit>
 #include <cstdint>
+#include <iostream>
+#include <vector>
+
 #include "color.h"
 #include "vec2.h"
 #include "vec3.h"
@@ -20,7 +21,8 @@ uint32_t uhash11(uint32_t n) {
 float hash11(float p) {
     auto n = std::bit_cast<uint32_t>(p);
 
-    return static_cast<float>(uhash11(n)) / std::numeric_limits<uint32_t>::max();
+    return static_cast<float>(uhash11(n)) /
+           std::numeric_limits<uint32_t>::max();
 }
 
 int main() {
@@ -38,12 +40,12 @@ int main() {
             auto v = static_cast<double>(j) / (height - 1);
             auto pos = vec2(u, v) + time;
             auto hash = hash11(static_cast<float>(pos.x()));
-            auto color = vec3(hash, hash, hash);          
+            auto color = vec3(hash, hash, hash);
 
             write_color(std::cout, color);
         }
     }
     std::cerr << "\nDone.\n";
-    
+
     return 0;
 }

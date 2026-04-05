@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "mymath.h"
 
 TEST(MyMathTest, Lerp) {
@@ -24,7 +25,7 @@ TEST(MyMathTest, ClampVec3) {
     vec3 v(0.5, -1.0, 2.0);
     vec3 min_val(0.0, 0.0, 0.0);
     vec3 max_val(1.0, 1.0, 1.0);
-    
+
     vec3 res = clamp(v, min_val, max_val);
     EXPECT_DOUBLE_EQ(res.x(), 0.5);
     EXPECT_DOUBLE_EQ(res.y(), 0.0);

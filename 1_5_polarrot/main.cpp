@@ -1,17 +1,18 @@
 #include <iostream>
 #include <vector>
+
 #include "color.h"
-#include "vec2.h"
 #include "mymath.h"
+#include "vec2.h"
 
 vec3 tex(vec2& st) {
     auto time = 0.2 * 0;
     auto tmp = pol2xy(vec2(time, 0.5)) + 0.5;
     auto circ = vec3(tmp.x(), tmp.y(), 1.0);
     const std::vector<color> col3 = {
-            vec3(circ.x(), circ.y(), circ.z()),
-            vec3(circ.y(), circ.z(), circ.x()),
-            vec3(circ.z(), circ.x(), circ.y()),
+        vec3(circ.x(), circ.y(), circ.z()),
+        vec3(circ.y(), circ.z(), circ.x()),
+        vec3(circ.z(), circ.x(), circ.y()),
     };
     st.setX(st.x() / M_PI + 1.0);
     st.setX(st.x() + time);
@@ -44,6 +45,6 @@ int main() {
         }
     }
     std::cerr << "\nDone.\n";
-    
+
     return 0;
 }

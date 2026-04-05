@@ -1,10 +1,11 @@
-#include <iostream>
-#include <vector>
 #include <bit>
 #include <cstdint>
+#include <iostream>
+#include <vector>
+
 #include "color.h"
-#include "vec2.h"
 #include "mymath.h"
+#include "vec2.h"
 
 int main() {
     const auto aspect_ratio = 16.0 / 9.0;
@@ -21,7 +22,7 @@ int main() {
             auto v = (double)j / (height - 1);
             auto pos = vec2(u, v);
             pos *= vec2(32.0, 9.0);
-            auto a = std::vector<uint32_t> {
+            auto a = std::vector<uint32_t>{
                 static_cast<uint32_t>(time),
                 0xbu,
                 9u,
@@ -53,6 +54,6 @@ int main() {
         }
     }
     std::cerr << "\nDone.\n";
-    
+
     return 0;
 }

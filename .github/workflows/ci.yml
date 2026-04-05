@@ -6,7 +6,36 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
+  lint:
+    name: Check Code Format
+    runs-on: ubuntu-24.04
+    if: github.event_name == 'pull_request'
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # 1. clang-format をインストール
+    - name: Install clang-format
+      run: sudo apt-get update && sudo apt-get install -y clang-format
+
+    # 2. 実際にファイルを上書きフォーマットする (-i オプション)
+    - name: Run clang-format
+      run: |
+        find . -name "*.cpp" -o -name "*.h" | grep -v "build" | grep -v "_deps" | xargs clang-format -i
+
+    # 3. 変更された差分を reviewdog がキャッチし、PRにサジェストとして書き込む
+    - name: Suggest formatting changes
+      uses: reviewdog/action-suggester@v1
+      with:
+        tool_name: clang-format
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        fail_on_error: true # 差分（フォーマット違反）があった場合はCIを失敗させる
+
   build-and-test:
     runs-on: ubuntu-24.04
 
@@ -20,6 +49,14 @@ jobs:
     # ENABLE_COVERAGE=ON を指定してCMakeを設定
     - name: Configure CMake
       run: cmake -B build -S . -DENABLE_COVERAGE=ON
+
+    - name: Install Linting Tools
+      run: sudo apt-get update && sudo apt-get install -y clang-format clang-tidy
+
+    - name: Check Code Format (clang-format)
+      # .cpp と .h ファイルを探して、フォーマット違反があればCIを失敗させる(--Werror)
+      run: |
+        find . -name "*.cpp" -o -name "*.h" | grep -v "build" | grep -v "_deps" | xargs clang-format --Werror --dry-run
 
     - name: Build
       run: cmake --build build
