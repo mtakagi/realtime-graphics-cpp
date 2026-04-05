@@ -6,9 +6,9 @@
 #include "vec2.h"
 #include "vec3.h"
 
-constexpr uint k = 0x456789abu;
+constexpr uint32_t k = 0x456789abu;
 
-uint uhash11(uint n) {
+uint32_t uhash11(uint32_t n) {
     n ^= (n << 1);
     n ^= (n >> 1);
     n *= k;
