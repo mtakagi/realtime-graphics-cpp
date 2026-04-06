@@ -14,6 +14,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(
   test_common
   test_vec2.cpp
+  test_ivec2.cpp
   test_uvec2.cpp
   test_vec3.cpp
   test_uvec3.cpp
