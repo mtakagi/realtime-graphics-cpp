@@ -84,7 +84,8 @@ class ivec2 {
 
     [[nodiscard]]
     constexpr int64_t length_squared() const noexcept {
-        return static_cast<int64_t>(e[0]) * e[0] + static_cast<int64_t>(e[1]) * e[1];
+        return static_cast<int64_t>(e[0]) * e[0] +
+               static_cast<int64_t>(e[1]) * e[1];
     }
 
    private:
