@@ -6,11 +6,10 @@
 #define COMMON_IVEC2_H
 
 #include <cmath>
+#include <cstdint>
 #include <iostream>
 
 #include "bool2.h"
-
-using std::sqrt;
 
 class ivec2 {
    public:
@@ -79,13 +78,13 @@ class ivec2 {
     }
 
     [[nodiscard]]
-    constexpr double length() const noexcept {
-        return sqrt(length_squared());
+    double length() const noexcept {
+        return std::sqrt(static_cast<double>(length_squared()));
     }
 
     [[nodiscard]]
-    constexpr int32_t length_squared() const noexcept {
-        return e[0] * e[0] + e[1] * e[1];
+    constexpr int64_t length_squared() const noexcept {
+        return static_cast<int64_t>(e[0]) * e[0] + static_cast<int64_t>(e[1]) * e[1];
     }
 
    private:
