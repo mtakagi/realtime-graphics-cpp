@@ -39,6 +39,7 @@ add_subdirectory(1_6_hsv2rgb)
 add_subdirectory(2_0_legacy)
 add_subdirectory(2_1_binary)
 add_subdirectory(2_2_hash1d)
+add_subdirectory(2_3_hash2d3d)
 
 enable_testing()
 add_subdirectory(tests)

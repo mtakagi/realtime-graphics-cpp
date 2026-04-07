@@ -89,6 +89,30 @@ class uvec3 {
         return *this;
     }
 
+    constexpr uvec3& operator^=(const uvec3& v) noexcept {
+        e[0] ^= v.x();
+        e[1] ^= v.y();
+        e[2] ^= v.z();
+
+        return *this;
+    }
+
+    constexpr uvec3& operator<<(const uvec3& v) noexcept {
+        e[0] <<= v.x();
+        e[1] <<= v.y();
+        e[2] <<= v.z();
+
+        return *this;
+    }
+
+    constexpr uvec3& operator>>(const uvec3& v) noexcept {
+        e[0] >>= v.x();
+        e[1] >>= v.y();
+        e[2] >>= v.z();
+
+        return *this;
+    }
+
     [[nodiscard]]
     constexpr double length() const noexcept {
         return sqrt(length_squared());
