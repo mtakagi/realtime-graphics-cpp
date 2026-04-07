@@ -55,6 +55,7 @@ set(GOLDEN_TARGETS
     legacy 
     binary
     hash1d
+    hash2d3d
 )
 
 foreach(TARGET_NAME IN LISTS GOLDEN_TARGETS)
