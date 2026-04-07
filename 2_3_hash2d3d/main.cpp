@@ -1,7 +1,7 @@
 #include <bit>
 #include <cstdint>
 #include <iostream>
-#include <vector>
+#include <limits>
 
 #include "color.h"
 #include "ivec2.h"

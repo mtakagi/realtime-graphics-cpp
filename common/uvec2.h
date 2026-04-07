@@ -85,18 +85,14 @@ class uvec2 {
         return *this;
     }
 
-    constexpr uvec2& operator<<(const uvec2& v) noexcept {
-        e[0] <<= v.x();
-        e[1] <<= v.y();
-
-        return *this;
+    [[nodiscard]]
+    constexpr uvec2 operator<<(const uvec2& v) const noexcept {
+        return {e[0] << v.x(), e[1] << v.y()};
     }
 
-    constexpr uvec2& operator>>(const uvec2& v) noexcept {
-        e[0] >>= v.x();
-        e[1] >>= v.y();
-
-        return *this;
+    [[nodiscard]]
+    constexpr uvec2 operator>>(const uvec2& v) const noexcept {
+        return {e[0] >> v.x(), e[1] >> v.y()};
     }
 
     [[nodiscard]]
